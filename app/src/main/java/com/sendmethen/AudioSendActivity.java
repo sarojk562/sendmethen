@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.google.gson.Gson;
 import com.sendmethen.com.sendmethen.fragments.ProgressRecordFragment;
@@ -49,6 +51,12 @@ public class AudioSendActivity extends AppCompatActivity {
     private Button recordAgainBtn;
     private LinearLayout startRecordLayout,stopRecordLayout,playRecordLayout;
     private EditText msgSubject,msgEmail,msgText;
+
+
+    private RadioGroup radioGroup;
+    private RadioButton radioButton1;
+    private RadioButton radioButton2;
+    private Boolean isPublic;
 
 
     public MediaRecorder mediaRecorder=new MediaRecorder();
@@ -111,6 +119,18 @@ public class AudioSendActivity extends AppCompatActivity {
 
 //        fragmentTransaction.replace(R.id.fragment_container,startRecordFragment);
 
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.radioButton1) {
+                    isPublic = true;
+                } else if(checkedId == R.id.radioButton2) {
+                    isPublic = false;
+                }
+            }
+        });
 
         startRecordBtn= (ImageButton) findViewById(R.id.startRecordBtn);
         stopRecordBtn = (ImageButton) findViewById(R.id.stopRecordBtn);
@@ -231,7 +251,7 @@ public class AudioSendActivity extends AppCompatActivity {
 
         textmsg.subject=msgSubject.getText().toString();
         textmsg.email=msgEmail.getText().toString();
-        textmsg.is_public=true;
+        textmsg.is_public=isPublic;
         textmsg.type="audio";
 
         api.upload_audio(typedFile, new Callback<HashMap>() {
