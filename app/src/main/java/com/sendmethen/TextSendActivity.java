@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.support.v7.widget.Toolbar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +41,12 @@ public class TextSendActivity extends AppCompatActivity {
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton1;
+    private RadioButton radioButton2;
     private int year, month, day;
     private EditText msgSubject,msgEmail,msgText;
+    private Boolean isPublic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +55,26 @@ public class TextSendActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         futureDateinp=(EditText) findViewById(R.id.futureDateinp);
         datePickerbtn= (Button) findViewById(R.id.datePickerbtn);
         futureDateinp= (EditText) findViewById(R.id.futureDateinp);
+        radioButton1 = (RadioButton) findViewById(R.id.radioButton1);
+        radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.radioButton1) {
+                    isPublic = true;
+                } else if(checkedId == R.id.radioButton2) {
+                    isPublic = false;
+                }
+            }
+        });
 
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -112,7 +133,7 @@ public class TextSendActivity extends AppCompatActivity {
         textmsg.text=msgText.getText().toString();
         textmsg.subject=msgSubject.getText().toString();
         textmsg.email=msgEmail.getText().toString();
-        textmsg.is_public=true;
+        textmsg.is_public=isPublic;
 
         api.sendTextMsg(textmsg,new Callback<HashMap>() {
             int return_obj;

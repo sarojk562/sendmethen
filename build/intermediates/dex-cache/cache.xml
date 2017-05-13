@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/sarojk/Desktop/KIOT_Code/sendmethen/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e1e8b6b1261c516528311c9a677692e32b9f4ef1">
+        <dex dex="/Users/sarojk/Desktop/KIOT_Code/sendmethen/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_146224b38a2aa1e203918825563a568d17864bd0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sarojk/Desktop/KIOT_Code/sendmethen/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/sarojk/Desktop/KIOT_Code/sendmethen/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_60cf4b3e3491c843be3a7840f5c202442b1ea6e2/classes.dex" />
+    </item>
+
+</items>
