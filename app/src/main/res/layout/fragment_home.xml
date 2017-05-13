@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"  android:gravity="center"
+        android:background="@drawable/background2">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is the Send Me Then.We understand How you are feeling today. But tommorow will be different. But chances are that tommorow you won&apos;t remember this moment. But we can remind you of this moment. Write us or tell us. We&apos;ll deliver our promise. "
+        android:gravity="fill_vertical"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:textSize="18dp"
+        android:textAlignment="gravity" />
+    </LinearLayout>
+</LinearLayout>

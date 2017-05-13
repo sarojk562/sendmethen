@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:background="#eee"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="0dp"
+    android:id="@+id/msgRow">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/msgTitle"
+        android:text="Hello curry it is india"
+        android:textSize="17dp"
+        android:textColor="#000"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/msgShortText"
+        android:text="Hello i am the whole story, which is hoing to be qquiet long so, i am going to see some spce from you, you MF. "
+        android:paddingTop="6dp"
+        android:paddingBottom="10dp"
+        />
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#ddd" />
+</LinearLayout>
+
