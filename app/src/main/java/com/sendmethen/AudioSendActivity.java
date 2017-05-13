@@ -2,6 +2,8 @@ package com.sendmethen;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.DatePickerDialog;
+import android.widget.DatePicker;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.sendmethen.com.sendmethen.fragments.ProgressRecordFragment;
@@ -35,6 +38,7 @@ import com.sendmethen.retrofitmodels.SendTextMsg;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import retrofit.Callback;
@@ -46,6 +50,12 @@ import retrofit.mime.TypedFile;
 public class AudioSendActivity extends AppCompatActivity {
     private static final String ROOT_URL ="http://sendmethen.feturtles.com" ;
     private Toolbar toolbar;
+    private Button datePickerbtn;
+    private EditText futureDateinp;
+    private DatePicker datePicker;
+    private Calendar calendar;
+    private int year, month, day;
+    private TextView dateView;
     private Fragment startRecordFragment,stopRecordFragment,progressRecordFragment;
     private ImageButton startRecordBtn,stopRecordBtn,playAudioBtn;
     private Button recordAgainBtn;
@@ -132,6 +142,23 @@ public class AudioSendActivity extends AppCompatActivity {
             }
         });
 
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        showDate(year, month+1, day);
+        futureDateinp=(EditText) findViewById(R.id.futureDateinp);
+        datePickerbtn= (Button) findViewById(R.id.datePickerbtn);
+
+        datePickerbtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                setDate();
+            }
+
+        });
+
         startRecordBtn= (ImageButton) findViewById(R.id.startRecordBtn);
         stopRecordBtn = (ImageButton) findViewById(R.id.stopRecordBtn);
         playAudioBtn = (ImageButton) findViewById(R.id.playAudioBtn);
@@ -189,6 +216,17 @@ public class AudioSendActivity extends AppCompatActivity {
 
 
     }
+
+    public void setDate() {
+        showDialog(999);
+//        Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showDate(int year, int i, int day) {
+        futureDateinp.setText(new StringBuilder().append(day).append("/")
+                .append(month).append("/").append(year));
+    }
+
 
     private void stopRecorder() {
         mediaRecorder.stop();
